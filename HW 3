@@ -1,0 +1,51 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+double alpha; //Rotation about the axis in radians
+double theta; //Rotation about the axis in radians
+double a; //[1,1]
+double b; //[1,2]
+const double c = 0; //[1,3]
+double d; //[2,1]
+double e; //[2,2]
+double f; //[2,3]
+double g; //[3,1]
+double h; //[3,2]
+double i; //[3,3]
+
+int main()
+{
+	cout << "Please input the desired rotation about Axis-1 in Radians: ";
+	cin >> alpha;
+	cout << "Please input the desired rotation about Axis-3 in Radians: ";
+	cin >> theta;
+
+	a = cos(theta);
+	b = sin(theta);
+	d = -cos(alpha)*sin(theta);
+	e = cos(alpha)*cos(theta);
+	f = sin(alpha);
+	g = sin(alpha);
+	h = -sin(alpha);
+	i = cos(alpha);
+
+	double DCM[3][3] = {
+		{a, b, c} ,
+		{d, e, f} ,
+		{g, h, i}
+	};
+	
+	cout << "Alpha = " << alpha << " Radians" <<endl;
+	cout << "Beta = " << theta << " Radians" <<endl;
+
+	for ( int y = 0; y < 3; y++ )
+		for (int z = 0; z < 3; z++) {
+
+			cout << "DCM[" << y << "][" << z << "]";
+			cout << DCM[y][z] << endl;
+		}
+
+	return 0;
+}
